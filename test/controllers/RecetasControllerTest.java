@@ -9,10 +9,9 @@ import play.test.WithApplication;
 
 import static org.junit.Assert.assertEquals;
 import static play.mvc.Http.Status.OK;
-import static play.test.Helpers.GET;
-import static play.test.Helpers.route;
+import static play.test.Helpers.*;
 
-public class HomeControllerTest extends WithApplication {
+public class RecetasControllerTest extends WithApplication {
 
     @Override
     protected Application provideApplication() {
@@ -20,13 +19,13 @@ public class HomeControllerTest extends WithApplication {
     }
 
     @Test
-    public void testIndex() {
+    public void testCreate() {
         Http.RequestBuilder request = new Http.RequestBuilder()
-                .method(GET)
-                .uri("/");
+                .method(POST)
+                .uri("/receta?name=cafe&stars=3");
 
         Result result = route(app, request);
-        assertEquals(OK, result.status());
+        assertEquals(CREATED, result.status());
     }
 
 }
