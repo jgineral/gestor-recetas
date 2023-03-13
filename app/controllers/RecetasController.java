@@ -1,37 +1,54 @@
 package controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import play.mvc.Results;
-import views.IngredienteView;
 import views.RecetaView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class RecetasController extends Controller {
 
+    ArrayList<RecetaView> recipes = new ArrayList<>();
+
     public Result create(Http.Request request) {
-        Result result;
-        String name = request.queryString("name").orElse("");
-        String stars = request.queryString("stars").orElse("");
-        String desc = request.queryString("description").orElse("");
-        String ingredientName = request.queryString("ingredientName").orElse("");
+        // TODO: Checkear Content-Type para futurua inmplementación, permitir HTML y JSON
+        if (!request.hasBody()) {
+            return badRequest("La petición requiere de un body");
+        }
+        JsonNode jsonBody = request.body().asJson();
 
-        RecetaView recetaView = new RecetaView();
-        recetaView.setName(name);
-        recetaView.setStars(Integer.valueOf(stars));
-        recetaView.setDescription(desc);
+        ObjectMapper mapper = new ObjectMapper();
+        RecetaView newRecipe = null;
+        try {
+            newRecipe = mapper.treeToValue(jsonBody, RecetaView.class);
+        } catch (JsonProcessingException e) {
+            return badRequest("JSON Formato incorrecto");
+        }
 
-        IngredienteView ingredient = new IngredienteView();
-        ingredient.setName(ingredientName);
+        if (newRecipe.getName().isEmpty() || newRecipe.getIngredients().isEmpty()) {
+            return badRequest("Faltan parámetros obligatorios, nombre o ingrediente");
+        }
+        recipes.add(newRecipe);
+        return created("Se va a crear la receta: "+ newRecipe.getName());
+    }
 
-        recetaView.getIngredients().add(ingredient);
+    public Result retrieve(Http.Request request, String id) {
+        return null;
+    }
 
+    public Result delete(Http.Request nequest, String id) {
+        return  null;
+    }
 
-        result = Results.created(recetaView.toJson())
-                .as("application/json");
+    public Result update(Http.Request nequest, String id) {
+        return null;
+    }
 
-        return result;
+    public Result retrieveAll(Http.Request nequest) {
+        return null;
     }
 }

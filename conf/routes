@@ -4,13 +4,22 @@
 
 # An example controller showing a sample home page
 #Crear receta
-POST    /receta   controllers.RecetasController.create(request: Request)
+POST    /recipe             controllers.RecetasController.create(request: Request)
 
 #Obtener receta
 
+GET     /recipe/:id         controllers.RecetasController.retrieve(request: Request, id: String)
+
+# Actualizar receta
+
+PUT     /recipe/:id         controllers.RecetasController.update(request: Request, id: String)
+
 # Borrar receta
 
+DELETE  /recipe/:id         controllers.RecetasController.delete(request: Request, id: String)
+
 # Listar todas las recetas
+GET     /recipes            controllers.RecetasController.retrieveAll(request: Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
