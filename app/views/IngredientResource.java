@@ -1,7 +1,7 @@
 package views;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Ingredients;
+import models.Ingredient;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.Validatable;
 import play.data.validation.Constraints.Validate;
@@ -23,7 +23,7 @@ public class IngredientResource implements Validatable<List<ValidationError>> {
     public IngredientResource() {
     }
 
-    public IngredientResource(Ingredients ingredients) {
+    public IngredientResource(Ingredient ingredients) {
         super();
         this.name = ingredients.getName();
         this.amount = ingredients.getAmount();
@@ -58,8 +58,8 @@ public class IngredientResource implements Validatable<List<ValidationError>> {
         return Json.toJson(this);
     }
 
-    public Ingredients toModel() {
-        Ingredients ingredients = new Ingredients();
+    public Ingredient toModel() {
+        Ingredient ingredients = new Ingredient();
         ingredients.setName(this.name);
         ingredients.setAmount(this.amount);
         ingredients.setMeasure(this.measure);

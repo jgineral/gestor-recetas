@@ -15,6 +15,8 @@ import views.xml.receta;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecipesController extends Controller {
 
@@ -30,6 +32,11 @@ public class RecipesController extends Controller {
         }
         RecipeResource newRecipe = recipeForm.get();
         Recipe recipeModel = newRecipe.toModel();
+        Recipe dbRecipe = Recipe.findByName(recipeModel.getName());
+        if  (dbRecipe != null && newRecipe.getName().equals(dbRecipe.getName())) {
+            // 409 CONFLICT
+            return status(409, "Ya existe una receta con ese nombre");
+        }
         recipeModel.save();
 
         ObjectNode jsonResponse = Json.newObject();
@@ -60,7 +67,12 @@ public class RecipesController extends Controller {
     }
 
     public Result delete(Http.Request nequest, Integer id) {
-        return  null;
+        Recipe dbRecipe = Recipe.findById(Long.valueOf(id));
+        if (dbRecipe != null) {
+            dbRecipe.delete();
+            return ok();
+        }
+        return  notFound();
     }
 
     public Result update(Http.Request nequest, Integer id) {
@@ -68,7 +80,9 @@ public class RecipesController extends Controller {
     }
 
     public Result retrieveAll(Http.Request nequest) {
-        JsonNode json = Json.toJson(recipes);
+        List<Recipe> recipes = Recipe.findAll();
+        List<RecipeResource> resources = recipes.stream().map(RecipeResource::new).collect(Collectors.toList());
+        JsonNode json = Json.toJson(resources);
         return ok(json);
     }
 }

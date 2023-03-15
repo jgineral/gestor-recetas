@@ -18,7 +18,7 @@ public class Recipe extends BaseModel {
     private String description;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Ingredients> ingredients = new LinkedList<>();
+    private List<Ingredient> ingredients = new LinkedList<>();
 
     // - métodos de acceso para leer la Base de datos.
 
@@ -41,6 +41,11 @@ public class Recipe extends BaseModel {
                 .setMaxRows(30)
                 .setFirstRow(0)
                 .findList();
+    }
+
+    public static List<Recipe> findAll() {
+        // !! Cuidado, si hay muchos elementos. Usar paginación.
+        return find.all();
     }
 
     // - getters & setters
@@ -68,11 +73,11 @@ public class Recipe extends BaseModel {
         this.description = description;
     }
 
-    public List<Ingredients> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredients> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 }
