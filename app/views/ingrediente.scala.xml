@@ -1,0 +1,7 @@
+@(name: String, amount: Double, measure: String)
+<?xml version="1.0" encoding="UTF-8" ?>
+<ingredient>
+    <name>@(name)</name>
+    <stars>@(amount)</stars>
+    <description>@(measure)</description>
+</ingredient>

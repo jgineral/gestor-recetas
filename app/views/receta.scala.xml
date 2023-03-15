@@ -1,0 +1,7 @@
+@(name: String, stars: Integer, description: String)
+<?xml version="1.0" encoding="UTF-8" ?>
+<recipe>
+    <name>@(name)</name>
+    <stars>@(stars)</stars>
+    <description>@(description)</description>
+</recipe>
