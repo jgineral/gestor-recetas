@@ -48,9 +48,11 @@ public class Recipe extends BaseModel {
                 .findList();
     }
 
-    public static List<Recipe> findAll() {
-        // !! Cuidado, si hay muchos elementos. Usar paginación.
-        return find.all();
+    public static List<Recipe> findAll(Integer maxRow, Integer firstRow) {
+        return find.query()
+                .setMaxRows(maxRow)
+                .setFirstRow(firstRow)
+                .findList();
     }
 
     // - getters & setters
