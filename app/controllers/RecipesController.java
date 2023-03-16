@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Ingredient;
 import models.Recipe;
-import play.cache.Cached;
 import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
@@ -135,15 +134,18 @@ public class RecipesController extends Controller {
         return ok(newIngredient.toJson());
     }
 
-    @Cached(key = "all-recipes-view")
     public Result retrieveAll(Http.Request nequest) {
+        String maxRow = "10";
+        String minRow = "0";
         List<Recipe> recipes;
-        Optional<Object> optRecipes = cache.get("all-recipes");
+        Optional<Object> optRecipes = cache.get("all-recipes" + maxRow + minRow);
         if (optRecipes.isPresent()) {
             recipes = (List<Recipe>) optRecipes.get();
         } else {
-            recipes = Recipe.findAll();
-            cache.set("all-recipes", recipes);
+            maxRow = nequest.getHeaders().get("Max-row").orElse(maxRow);
+            minRow = nequest.getHeaders().get("Min-row").orElse(minRow);
+            recipes = Recipe.findAll(Integer.valueOf(maxRow), Integer.valueOf(minRow));
+            cache.set("all-recipes" + maxRow + minRow, recipes);
         }
 
         List<RecipeResource> resources = recipes.stream().map(RecipeResource::new).collect(Collectors.toList());
