@@ -7,8 +7,8 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
-public class Ingredients extends BaseModel {
-    private static final Finder<Long, Ingredients> find = new Finder<>(Ingredients.class);
+public class Ingredient extends BaseModel {
+    private static final Finder<Long, Ingredient> find = new Finder<>(Ingredient.class);
     private String name;
     private Double amount;
     private String measure;
@@ -18,11 +18,11 @@ public class Ingredients extends BaseModel {
 
     // - métodos de acceso para leer la Base de datos.
 
-    public static Ingredients findById(Long id) {
+    public static Ingredient findById(Long id) {
         return find.byId(id);
     }
 
-    public static Ingredients findByName(String name) {
+    public static Ingredient findByName(String name) {
         return find.query()
                 .where()
                 .eq("name", name)

@@ -1,7 +1,18 @@
-@(name: String, stars: Integer, description: String)
+@(name: String, stars: Integer, description: String, ingredients: List[IngredientResource])
 <?xml version="1.0" encoding="UTF-8" ?>
 <recipe>
     <name>@(name)</name>
     <stars>@(stars)</stars>
     <description>@(description)</description>
+    <ingredients>
+            @for(ingredient <- ingredients) {
+            <ingredient>
+                <name>@(ingredient.getName())</name>
+                @if(ingredient.getMeasure() != null) {
+                    <amount>@(ingredient.getAmount())</amount>
+                    <measure>@(ingredient.getMeasure())</measure>
+                }
+            </ingredient>
+            }
+    </ingredients>
 </recipe>

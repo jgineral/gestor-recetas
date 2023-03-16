@@ -14,6 +14,9 @@ GET     /recipe/:id         controllers.RecipesController.retrieve(request: Requ
 
 PUT     /recipe/:id         controllers.RecipesController.update(request: Request, id: Integer)
 
+# Actualizar receta con ingrediente
+PUT     /ingredient/recipe/:id         controllers.RecipesController.addRecipe(request: Request, id: Integer)
+
 # Borrar receta
 
 DELETE  /recipe/:id         controllers.RecipesController.delete(request: Request, id: Integer)

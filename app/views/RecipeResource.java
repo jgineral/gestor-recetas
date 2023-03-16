@@ -1,7 +1,7 @@
 package views;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Ingredients;
+import models.Ingredient;
 import models.Recipe;
 import play.data.validation.Constraints;
 import play.libs.Json;
@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecipeResource {
     @Constraints.Required
@@ -29,6 +30,7 @@ public class RecipeResource {
 
     // Neceistamos un constructor por defecto para que compile al hacer el formulario: FormFactory
     public RecipeResource() {
+        super();
     }
 
     public RecipeResource(Recipe recipe) {
@@ -39,14 +41,9 @@ public class RecipeResource {
         this.ingredients = getIngredientsModel(recipe.getIngredients());
     }
 
-    private List<IngredientResource> getIngredientsModel( List<Ingredients> ingredientsModel) {
-        List<IngredientResource> newIngredients = new LinkedList<>();
-        IngredientResource newIngredient;
-        for (Ingredients ingredient : ingredientsModel) {
-            newIngredient = new IngredientResource(ingredient);
-            newIngredients.add(newIngredient);
-        }
-        return newIngredients;
+    private List<IngredientResource> getIngredientsModel( List<Ingredient> ingredientsModel) {
+        List<IngredientResource> resources = ingredientsModel.stream().map(IngredientResource::new).collect(Collectors.toList());
+        return resources;
     }
 
     public String getName() {
@@ -87,19 +84,23 @@ public class RecipeResource {
 
     public Recipe toModel() {
         Recipe recipe = new Recipe();
+        //Ingredient ingredient;
         recipe.setName(this.name);
         recipe.setStars(this.stars);
         recipe.setDescription(this.description);
         recipe.setIngredients(setIngredientsModel(this.ingredients));
+
+        /*for (IngredientResource resource: this.ingredients) {
+            ingredient = resource.toModel();
+            recipe.addIngredient(ingredient);
+        }*/
         return recipe;
     }
-
-    private List<Ingredients> setIngredientsModel(List<IngredientResource> ingredientsResource) {
-        List<Ingredients> newIngredients = new LinkedList<>();
+    private List<Ingredient> setIngredientsModel(List<IngredientResource> ingredientsResource) {
+        List<Ingredient> newIngredients = new LinkedList<>();
         for (IngredientResource ingredient : ingredientsResource) {
             newIngredients.add(ingredient.toModel());
         }
-
         return newIngredients;
     }
 }
