@@ -12,16 +12,16 @@ POST -> /recipes
   Dado el json con el siguiente formato
 json.
 
-    {
-    	"name": "Tostada con jamón",
-    	"stars": 2,
-    	"description": "Tostadas las de toda la vida",
-    	"ingredients": [
-      	 	{
-            	"name": "Pan de molde",
-            	"amount": 2.0,
-            	"measure": "unidad"
-        	}
-    	]
+    	{
+   		"name": "Tostada con jamón",
+    		"stars": 2,
+    		"description": "Tostadas las de toda la vida",
+    		"ingredients": [
+      	 		{
+            		  "name": "Pan de molde",
+            		  "amount": 2.0,
+            		  "measure": "unidad"
+        		}
+    		]
 	}
     
