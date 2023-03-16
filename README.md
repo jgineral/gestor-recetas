@@ -47,8 +47,8 @@ PUT -> /ingredient/recipe/1
 
     {
            "name": "Pan de molde",
-            "amount": 2.0,
-            '"measure": "unidad"
+           "amount": 2.0,
+           "measure": "unidad"
 	}
     
   
