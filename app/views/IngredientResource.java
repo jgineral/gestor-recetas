@@ -21,6 +21,7 @@ public class IngredientResource implements Validatable<List<ValidationError>> {
     private String measure;
 
     public IngredientResource() {
+        super();
     }
 
     public IngredientResource(Ingredient ingredients) {

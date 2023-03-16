@@ -20,6 +20,11 @@ public class Recipe extends BaseModel {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Ingredient> ingredients = new LinkedList<>();
 
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+        //ingredient.recipes.add(this);
+    }
+
     // - métodos de acceso para leer la Base de datos.
 
     public static Recipe findById(Long id) {
@@ -78,6 +83,9 @@ public class Recipe extends BaseModel {
     }
 
     public void setIngredients(List<Ingredient> ingredients) {
+       /* for (Ingredient ingredient: ingredients) {
+            ingredient.recipes.add(this);
+        }*/
         this.ingredients = ingredients;
     }
 }

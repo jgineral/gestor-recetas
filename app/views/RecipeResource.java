@@ -30,6 +30,7 @@ public class RecipeResource {
 
     // Neceistamos un constructor por defecto para que compile al hacer el formulario: FormFactory
     public RecipeResource() {
+        super();
     }
 
     public RecipeResource(Recipe recipe) {
@@ -83,19 +84,23 @@ public class RecipeResource {
 
     public Recipe toModel() {
         Recipe recipe = new Recipe();
+        //Ingredient ingredient;
         recipe.setName(this.name);
         recipe.setStars(this.stars);
         recipe.setDescription(this.description);
         recipe.setIngredients(setIngredientsModel(this.ingredients));
+
+        /*for (IngredientResource resource: this.ingredients) {
+            ingredient = resource.toModel();
+            recipe.addIngredient(ingredient);
+        }*/
         return recipe;
     }
-
     private List<Ingredient> setIngredientsModel(List<IngredientResource> ingredientsResource) {
         List<Ingredient> newIngredients = new LinkedList<>();
         for (IngredientResource ingredient : ingredientsResource) {
             newIngredients.add(ingredient.toModel());
         }
-
         return newIngredients;
     }
 }
