@@ -45,7 +45,7 @@ PUT -> /ingredient/recipe/1
   Añade un ingrediente a la receta indicada. Para ello habra que indicar un JSON con el siguiente formato. Siendo measure y amount obligatorios los 2 campos si uno existe.
    json.
 
-    	{
+    {
            "name": "Pan de molde",
             "amount": 2.0,
             '"measure": "unidad"
