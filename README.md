@@ -34,6 +34,11 @@ GET -> recipe/2
 GET -> /recipes
 
   Recibimos todas las recetas.
+  Habrá que indicar el maximo de elemento que queremos que devuelva y en que posición de inicio. Por defecto devuelve los 10 primeros elementos.
+  Para indicar estos valores se tienen que enviar las siguientes cabeceras
+  
+  > Max-row : 10
+  > Min-row : 0
   
 DELETE -> /recipe/1
 
