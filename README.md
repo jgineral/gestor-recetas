@@ -38,6 +38,7 @@ GET -> /recipes
   Para indicar estos valores se tienen que enviar las siguientes cabeceras
   
   > Max-row : 10
+
   > Min-row : 0
   
 DELETE -> /recipe/1
