@@ -9,6 +9,7 @@
 # Rutas
 
 POST -> /recipes
+
   Dado el json con el siguiente formato
 json.
 
