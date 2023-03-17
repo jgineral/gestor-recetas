@@ -73,6 +73,7 @@ public class RecipesController extends Controller {
         if (isAcceptJson) {
             result = ok(recipeView.toJson());
         } else if (isAcceptXML) {
+            // https://www.playframework.com/documentation/2.8.x/ScalaTemplates
             result = ok(receta.render(
                     recipeView.getName(),
                     recipeView.getStars(),
@@ -135,6 +136,7 @@ public class RecipesController extends Controller {
     }
 
     public Result retrieveAll(Http.Request nequest) {
+        // https://www.playframework.com/documentation/2.3-M1/api/java/play/db/ebean/Model.Finder.html#setMaxRows(int)
         String maxRow = "10";
         String minRow = "0";
         List<Recipe> recipes;
