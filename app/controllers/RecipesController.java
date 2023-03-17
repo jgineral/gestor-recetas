@@ -78,7 +78,7 @@ public class RecipesController extends Controller {
                     recipeView.getName(),
                     recipeView.getStars(),
                     recipeView.getDescription(),
-                    recipeView.getIngredients()));
+                    recipe.getIngredients())); //Por algun motivo si uso IngredientResource, en el XML, no es capaz de importalo al hacer la build, por eso uso el modelo.
         } else {
             result = unsupportedMediaType("Soportado: 'application/json' o 'application/xml'");
         }

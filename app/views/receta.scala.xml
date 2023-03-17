@@ -1,4 +1,4 @@
-@(name: String, stars: Integer, description: String, ingredients: List[IngredientResource])
+@(name: String, stars: Integer, description: String, ingredients: List[Ingredient])
 <?xml version="1.0" encoding="UTF-8" ?>
 <recipe>
     <name>@(name)</name>
