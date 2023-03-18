@@ -1,24 +1,6 @@
-## gestor-recetas
+# gestor-recetas
 
-# Build for AWS
- 
-> sbt
-
-> [gestor-recetas] $clean
-
-> [gestor-recetas] $compile
-
-> [gestor-recetas] $ dist
-
-Renombrar archivo
-> ./target/universal/gestor-recetas1.0-SNAPSHOT.zip
-
-a
-
-> ./target/universal/gestor-recetas-SNAPSHOT.zip
-
-
-# Rutas
+## Rutas
 
 POST -> /recipes
 
@@ -70,3 +52,20 @@ PUT -> /ingredient/recipe/1
 	}
     
   
+
+## Build for AWS
+ 
+> sbt
+
+> [gestor-recetas] $clean
+
+> [gestor-recetas] $compile
+
+> [gestor-recetas] $ dist
+
+Renombrar archivo
+> ./target/universal/gestor-recetas1.0-SNAPSHOT.zip
+
+a
+
+> ./target/universal/gestor-recetas-SNAPSHOT.zip
