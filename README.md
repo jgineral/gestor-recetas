@@ -7,7 +7,7 @@ De momento hay activo un balanceador que estará disponible para la evaluación,
 Puedes encontrar la ruta y empezar a hacer peticiones en:
 > http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
 
-Este cuenta con 3 instancias que usará el balnceador, más que suficiente para una aplicación de pruebas ya que no va a soportar carga masiva de usuarios. Cuenta con un grupo de segurdad HTTP abierto para lanzar peticiones por el puerto 80.
+Este cuenta con 3 instancias que usará el balanceador, más que suficiente para una aplicación de pruebas ya que no va a soportar carga masiva de usuarios. Cuenta con un grupo de seguridad HTTP abierto para lanzar peticiones por el puerto 80.
 En este caso no cuenta con una base de datos en la nube, la gestiona la applicación con una base de datos en local.
 La aplicación incluye el archivo `main.tf` con una imagen (AMI) estable de la app.
 Se puede generar su propia imagen con packer dado el archivo `gestor-recetas.json` Lo único que si usas una maquina con poco espacio te pregunta que se necesita 'x'espacio en el disco y al tener que responer 'yes', shell no lo hace. Aún así en la parte del shell se encuentran todos los pasos que debes realizar para levantar tu propia instancia. (En el ultimo apartado se explica como obtener el .zip de la applicación con sbt)
