@@ -2,8 +2,6 @@
 provider "aws" {
   region = "eu-south-2"
   skip_region_validation = true
-  access_key = "AKIAYHB3XGFBCWTST73D"
-  secret_key = "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"
 }
 
 data "aws_vpc" "default" {
