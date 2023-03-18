@@ -13,7 +13,7 @@ La aplicación incluye el archivo `main.tf` con una imagen (AMI) estable de la a
 Se puede generar su propia imagen con packer dado el archivo `gestor-recetas.json` Lo único que si usas una maquina con poco espacio te pregunta que se necesita 'x'espacio en el disco y al tener que responer 'yes', shell no lo hace. Aún así en la parte del shell se encuentran todos los pasos que debes realizar para levantar tu propia instancia. (En el ultimo apartado se explica como obtener el .zip de la applicación con sbt)
 En los archivos `start.sh` y `gestor-recetas.service` Se encuentra la configuración para mantener la app siempre lanzada en la instancia. Si este proceso muere, se intentará levantar de nuevo.
 
-La estrucuta se ha organizado por Controlladores, que en este caso controlla las peticiones de las recetas.
+La estructura se ha organizado por Controlladores, que en este caso gestiona las peticiones de las recetas.
 Modelos, que son nuestro modelos para la base de datos, ingredientes y receta.
 Y Vistas, en las que se encuentras los recursos con los que se puede comunicar el Controller con los Modelos. Y las vistas XML para proporcionar una respuesta en XML si así se indicase en la cabecera accept. (Detallado en rutas.)
 
@@ -39,14 +39,14 @@ POST -> /recipes
     
 GET -> recipe/2
 
-  Recibimos la receta con el id indicado (Int). La respuesta aceptada puede cambiarse añadiento la cabecera accept. Soportando XML o JSON indicandolo en la cabecera Accept.
+  Recibimos la receta con el id indicado (Int). La respuesta aceptada puede cambiarse añadiendo la cabecera accept. Soportando XML o JSON indicandolo en la cabecera Accept.
   
   > Accept : application/xml
   
 GET -> /recipes
 
   Recibimos todas las recetas.
-  Habrá que indicar el máximo de elemento que queremos que devuelva y en que posición de inicio. Por defecto devuelve los 10 primeros elementos.
+  Habrá que indicar el máximo de elementos que queremos que devuelva y en que posición de inicio. Por defecto devuelve los 10 primeros elementos.
   Para indicar estos valores se tienen que enviar las siguientes cabeceras:
   
   > Max-row : 10
