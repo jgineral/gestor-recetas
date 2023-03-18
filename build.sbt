@@ -1,5 +1,6 @@
 name := """gestor-recetas"""
 organization := "jginera"
+maintainer := "https://github.com/jgineral/gestor-recetas"
 
 version := "1.0-SNAPSHOT"
 
