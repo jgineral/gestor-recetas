@@ -9,11 +9,12 @@ Puedes encontrar la ruta y empezar a hacer peticiones en:
 
 Este cuenta con 3 instancias que usará el balnceador, más que suficiente para una aplicación de pruebas ya que no va a soportar carga masiva de usuarios. Cuenta con un grupo de segurdad HTTP abierto para lanzar peticiones por el puerto 80.
 En este caso no cuenta con una base de datos en la nube, la gestiona la applicación con una base de datos en local.
+La aplicación incluye el archivo main.tf con una imagen estable de la app.
+Se puede generar su propia imagen con packer dado el archivo `gestor-recetas.json`
 
 La estrucuta se ha organizado por Controlladores, que en este caso controlla las peticiones de las recetas.
 Modelos, que son nuestro modelos para la base de datos, ingredientes y receta.
 Y Vistas, en las que se encuentras los recursos con los que se puede comunicar el Controller con los Modelos. Y las vistas XML para proporcionar una respuesta en XML si así se indicase en la cabecera accept. (Detallado en rutas.)
-
 
 ## Rutas
 
