@@ -1,6 +1,6 @@
 # gestor-recetas
 
-El objetivo de esta aplicación REST es aprender un poco los fundamentos de las tecnologías al lado del Servidor, como despliegues en la nube, en este caso AWS.
+El objetivo de esta aplicación REST es aprender los fundamentos de las tecnologías al lado del Servidor, como despliegues en la nube, en este caso AWS.
 La aplicación usa una base de datos local h2 para guardar la información de unas recetas(rutas explicadas más abajo), en este caso no he podido configurar una base de datos en AWS.
 
 De momento hay activo un balanceador que estará disponible para la evaluación, más tarde seran eliminadas con terraform (terraform destroy).
