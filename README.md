@@ -7,7 +7,6 @@ De momento hay activo un balanceador que estará disponible para la evaluación,
 Puedes encontrar la ruta y empezar a hacer peticiones en:
 > http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
 
-
 ## Rutas
 
 POST -> /recipes
