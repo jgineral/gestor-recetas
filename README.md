@@ -1,6 +1,6 @@
 ## gestor-recetas
 
-Build for AWS
+# Build for AWS
  
 > sbt
 
