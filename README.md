@@ -1,5 +1,13 @@
 # gestor-recetas
 
+El objetivo de esta aplicación REST es aprender un poco los fundamentos de las tecnologias al lado del Servidor, como despliegues en la nube, en este caso AWS.
+La aplicación usa una base de datos local h2 para guardar la información de unas recetas(rutas explicadas más abajo), en este caso no he podido configurar una en AWS.
+
+De momento hay activo un balanceador que estará disponible para la evaluación, más tarde seran eliminadas con terraform (terraform destroy).
+Puedes encontrar la ruta y empezar a hacer peticiones en:
+> http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
+
+
 ## Rutas
 
 POST -> /recipes
