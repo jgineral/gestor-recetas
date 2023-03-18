@@ -5,6 +5,7 @@ Build for AWS
 > sbt
 
 > [gestor-recetas] $clean
+
 > [gestor-recetas] $compile
 
 > [gestor-recetas] $ dist
