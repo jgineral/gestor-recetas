@@ -1,10 +1,17 @@
 # gestor-recetas
- 
-!Importante, para que devuelva El formato XML Correctamente hay que hacer un import de la clase IngredientResource.
 
- >import views.IngredientResource
+Build for AWS
  
- En el archivo -> "\gestor-recetas\target\scala-2.13\twirl\main\views\xml\receta.template.scala"
+> sbt
+
+> [gestor-recetas] $ dist
+
+Renombrar archivo
+> ./target/universal/gestor-recetas1.0-SNAPSHOT.zip
+
+a
+
+> ./target/universal/gestor-recetas-SNAPSHOT.zip
 
 
 # Rutas
