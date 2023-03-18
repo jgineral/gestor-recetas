@@ -7,6 +7,14 @@ De momento hay activo un balanceador que estará disponible para la evaluación,
 Puedes encontrar la ruta y empezar a hacer peticiones en:
 > http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
 
+Este cuenta con 3 instancias que usará el balnceador, más que suficiente para una aplicación de pruebas ya que no va a soportar carga masiva de usuarios. Cuenta con un grupo de segurdad HTTP abierto para lanzar peticiones por el puerto 80.
+En este caso no cuenta con una base de datos en la nube, la gestiona la applicación con una base de datos en local.
+
+La estrucuta se ha organizado por Controlladores, que en este caso controlla las peticiones de las recetas.
+Modelos, que son nuestro modelos para la base de datos, ingredientes y receta.
+Y Vistas, en las que se encuentras los recursos con los que se puede comunicar el Controller con los Modelos. Y las vistas XML para proporcionar una respuesta en XML si así se indicase en la cabecera accept. (Detallado en rutas.)
+
+
 ## Rutas
 
 POST -> /recipes
@@ -29,7 +37,9 @@ POST -> /recipes
     
 GET -> recipe/2
 
-  Recibimos la receta con el id indicado (Int). La respuesta aceptada puede cambiarse añadiento la cabecera accept. Soportando XML o JSON si no se indica nada por defecto se   devuelve en formato JSON.
+  Recibimos la receta con el id indicado (Int). La respuesta aceptada puede cambiarse añadiento la cabecera accept. Soportando XML o JSON indicandolo en la cabecera Accept.
+  
+  > Accept : application/xml
   
 GET -> /recipes
 
