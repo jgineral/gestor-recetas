@@ -1,0 +1,12 @@
+[Unit]
+Description="Recetas MIMO Application"
+
+[Service]
+WorkingDirectory=/opt/recetasMIMO/gestor-recetas-1.0-SNAPSHOT
+ExecStart=/usr/bin/bash -c '/opt/recetasMIMO/gestor-recetas-1.0-SNAPSHOT/start.sh'
+ExecStop=/bin/kill -TERM $MAINPID
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
