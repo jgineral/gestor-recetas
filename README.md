@@ -5,7 +5,7 @@ La aplicación usa una base de datos local h2 para guardar la información de un
 
 De momento hay activo un balanceador que estará disponible para la evaluación, más tarde seran eliminadas con terraform (terraform destroy).
 Puedes encontrar la ruta y empezar a hacer peticiones en:
-> http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
+> (desactivado) http://gestor-recetas-1270346934.eu-south-2.elb.amazonaws.com/
 
 Este cuenta con 3 instancias que usará el balanceador, más que suficiente para una aplicación de pruebas ya que no va a soportar carga masiva de usuarios. Cuenta con un grupo de seguridad HTTP abierto para lanzar peticiones por el puerto 80.
 En este caso no cuenta con una base de datos en la nube, la gestiona la applicación con una base de datos en local.
